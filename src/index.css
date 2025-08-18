@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+.font-sour {
+  font-family: 'Lexend', sans-serif;
+}
+
+:root {
+  --fondo: #341307;
+  --fondo2: #62190c;
+  --fondo3: #2a2a2a;
+  --text1: #ffff89;
+  --text2: #e4e4e4;
+  --text3: #cacaca;
+  --focus: #7f2a1b; 
+}
+
+.hex {
+  clip-path: polygon(
+    25% 0%, 
+    75% 0%, 
+    100% 50%, 
+    75% 100%, 
+    25% 100%, 
+    0% 50%
+  );
+}
+
+.hex-big {
+  clip-path: polygon(
+    10% 0%, 
+    90% 0%, 
+    100% 50%, 
+    90% 100%, 
+    10% 100%, 
+    0% 50%
+  );
+}
