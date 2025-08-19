@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import TimeEvent from './components/TimeEvent'
 import SuportCard from "./components/SuportCard"
 import PaymentInfo from "./components/PaymentInfo"
+import LoginCard from "./components/LoginCard"
 
 export default function App() { 
 
@@ -10,7 +11,6 @@ export default function App() {
     {'title': 'Rango VIP (Crono)', 'description': '  El rango VIP Crono te da acceso a ventajas exclusivas y permanentes. Con él, disfrutarás de beneficios únicos y un estatus superior que te diferenciará del resto de jugadores.  ', 'price': 14.24, 'img': 'crono.png','discount': null},
     {'title': 'Pack de Hierro', 'description': '¡Domina la economía de TitanCraft! Con nuestros Packs de Dinero (Titans), podrás asegurar tu riqueza de forma rápida y segura. Compra lo que necesites, invierte en tu futuro y sube a lo más alto de la clasificación. ¡El poder económico está a solo un clic!', 'price': 16.82, 'img': 'pack_hierro.png', 'discount': null},
   ]
-
 
   return (
     <div className="bg-[var(--fondo)]">

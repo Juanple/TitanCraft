@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useLogin } from "../context/LoginContext";
+
 
 export default function Header() {
     
     const [menuState, setMenuState] = useState(false);
-  
+    const { openLogin } = useLogin();
+
     const responsiveMenu = (
     <div className={`absolute transition-all duration-500 ${menuState ? 'left-0 opacity-100' : 'left-[-20rem] opacity-0'} xl:hidden z-10 top-0 bg-[var(--fondo)] text-[var(--text2)] w-[20rem] h-screen font-bold`}>
       <div className="flex bg-[var(--fondo2)] justify-between p-4 pt-8 pb-8">
@@ -93,13 +96,16 @@ export default function Header() {
             <div className="">
               <p className="text-white m-0 text-[17px] font-extrabold">COMPRANDO COMO <p className="text-[var(--text3)] m-0 opacity-70">INVITADO</p></p>
               <div className="flex gap-2 text-white justify-between text-[14px]">
-                <button className="text-[var(--text3)] cursor-pointer hover:text-white"><i className="fa-solid fa-right-to-bracket" /> Registrarse</button>
+                <button onClick={openLogin} 
+                className="text-[var(--text3)] cursor-pointer hover:text-white"><i className="fa-solid fa-right-to-bracket" /> Registrarse</button>
                 <p>$ EUR</p>
               </div>
             </div>
           </div>
             {/* Registrarse card responsive */}
-          <button className="font-extrabold md:hidden flex z-10 bg-gradient-to-r from-[#CCAC00] flex justify-center items-center to-[#665600] text-[var(--text2)] text-xl border-5 border-[#CCAC00] cursor-pointer transition transform hover:scale-[0.98] p-2 w-[15rem] h-[4rem]">
+          <button
+          onClick={openLogin}
+          className="font-extrabold md:hidden flex z-10 bg-gradient-to-r from-[#CCAC00] flex justify-center items-center to-[#665600] text-[var(--text2)] text-xl border-5 border-[#CCAC00] cursor-pointer transition transform hover:scale-[0.98] p-2 w-[15rem] h-[4rem]">
             <h1 className="drop-shadow-[0_1px_3px_black]">REGISTRARSE</h1>
           </button>
 
