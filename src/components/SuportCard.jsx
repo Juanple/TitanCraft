@@ -1,6 +1,6 @@
 export default function SuportCard() {
     return (
-        <div className="text-white flex flex-col bg-[var(--fondo3)] border-2 border-white/20 max-w-100">
+        <div className="text-white flex flex-col bg-[var(--fondo3)] border-2 border-white/20 w-full">
             <div className="bg-white/5 text-xl font-extrabold text-[var(--text1)] p-6">
                 <h1>Soporte / Preguntas</h1>
             </div>

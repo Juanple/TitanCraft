@@ -1,16 +1,14 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask import jsonify, request, Blueprint
 import pymysql
 import bcrypt
 
-app = Flask(__name__)
-CORS(app)
+login = Blueprint('login', __name__)
 
-@app.route('/login', methods=['POST'])
+@login.route('/login', methods=['POST'])
 def verify_login():
 
     data = request.get_json()
-    input_name = data['user']
+    input_name = data['username']
     input_password = data['password']
 
     try:
@@ -28,9 +26,9 @@ def verify_login():
         cursor.execute('SELECT password FROM nlogin WHERE last_name = %s',(input_name, ))
         response = cursor.fetchall()
 
-        # Verificar si el usuario existe <3
+        # Verificar si el usuario existe
         if len(response) == 0:
-            return jsonify({'login': False, 'message': 'El usuario no existe'}), 200    
+            return jsonify({'login': False}), 401
         
         # Converir la contraseña de la db a bytes
         password = response[0][0].encode('utf-8')
@@ -38,20 +36,19 @@ def verify_login():
         # Convertir la contraseña introducida por el usuario a bytes 
         encode_input_password = input_password.encode('utf-8')
 
-        # Verificar si la contraseña es correcta comparandolas
-        if bcrypt.checkpw(encode_input_password, password):
-            return jsonify({'login': True, 'message': ''}), 200
-        else:
-            return jsonify({'login': False,'message': 'Contraseña incorrecta'}), 200
+        # Verificar si la contraseña es incorrecta comparandolas
+        if bcrypt.checkpw(encode_input_password, password) == False:
+            return jsonify({'login': False}), 401
+        
+        #En caso de que el usuario y contraseña sean correctos:
+        return jsonify({'admin': False}), 200
 
-    except Exception as error: # Captar algun error de conexion
+    except Exception as error: # Captar algun error de conexion con la db
         print(f'Error de conexion con la base de datos: {error}')
-        return jsonify({'login': False}), 200
+        return jsonify({'login': False}), 401
 
     finally: # Cerrar conexion
         connection.commit()
         cursor.close()
         connection.close()
         
-if __name__ == '__main__':
-    app.run(debug=True)

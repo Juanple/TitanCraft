@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 import { useLogin } from "../context/LoginContext";
 
 export default function LoginCard() {
-  const { isLoginOpen, closeLogin } = useLogin();
+
+  const { isLoginOpen, closeLogin, login } = useLogin();
   const [message, setMessage] = useState('');
 
-  async function login(e) {
+  const onHandleSubmit = async (e) => {
     e.preventDefault();
-    const user = e.target.user.value;
+    const username = e.target.user.value;
     const password = e.target.password.value;
-    e.target.reset();
 
-    const response = await fetch('http://127.0.0.1:5000/login',{
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({ user, password })
-    });
-    const data = await response.json();
-    setMessage(data.message);
+    const res = await login(username, password);
+
+    if(res) {
+      closeLogin();
+    } else {
+      setMessage('Datos introducidos incorrectos');
+    }
   }
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function LoginCard() {
           </button>
           <img src="../../public/logo.png" className="w-[30rem] absolute mb-10" />
         </div>
-        <form onSubmit={login} className="flex flex-col gap-4 text-md font-bold p-10">
+        <form onSubmit={onHandleSubmit} className="flex flex-col gap-4 text-md font-bold p-10">
           <p>{message}</p>
           <input required type="text" name="user" placeholder="Nombre de usuario"
             className="bg-[var(--fondo4)] p-5 border-b-2 border-white/20" />

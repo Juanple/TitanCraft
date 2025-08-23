@@ -25,10 +25,10 @@ export default function TimeEvent({targetDate, title_yellow, title_white, descri
   }, []);
 
   return (
-    <div className="flex justify-between m-x-300 items-center gap-2 bg-[var(--fondo3)] p-5 border-2 border-white/20">
-      <div className="flex items-center gap-5 ">
+    <div className="flex flex-col md:flex-row justify-between w-full items-center gap-10 md:gap-2 bg-[var(--fondo3)] pt-10 pb-10 pl-1 pr-1 md:p-5 border-2 border-white/20">
+      <div className="flex flex-col md:flex-row items-center gap-10 md:gap-5 ">
         <div>
-          <img src="../../event-img.png" className="w-30 h-auto" />
+          <img src="../../event-img.png" className="flex md:hidden lg:flex w-30 h-auto" />
         </div>
         <div className="flex flex-col gap-3">
           <h1 className="text-[var(--text1)] text-3xl font-extrabold">

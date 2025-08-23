@@ -1,6 +1,6 @@
 export default function PaymentInfo() {
     return (
-        <div className="bg-[var(--fondo3)] max-w-100 border-2 border-white/20">
+        <div className="bg-[var(--fondo3)] w-full border-2 border-white/20">
             <div className="bg-white/5 p-6 font-extrabold">
                 <h1 className="text-xl text-[var(--text1)]">Pagos aceptados</h1>
             </div> 

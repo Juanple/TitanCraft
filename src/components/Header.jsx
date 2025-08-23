@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { useLogin } from "../context/LoginContext";
+import BuyingAsGuessCard from "./BuyingAsGuessCard";
 
 
 export default function Header() {
     
     const [menuState, setMenuState] = useState(false);
-    const { openLogin } = useLogin();
 
     const responsiveMenu = (
-    <div className={`absolute transition-all duration-500 ${menuState ? 'left-0 opacity-100' : 'left-[-20rem] opacity-0'} xl:hidden z-10 top-0 bg-[var(--fondo)] text-[var(--text2)] w-[20rem] h-screen font-bold`}>
+    <div className={`absolute transition-all duration-500 ${menuState ? 'left-0 opacity-100' : 'left-[-20rem] opacity-0'} xl:hidden z-20 top-0 bg-[var(--fondo)] text-[var(--text2)] w-[20rem] h-screen font-bold`}>
       <div className="flex bg-[var(--fondo2)] justify-between p-4 pt-8 pb-8">
         <p>Menu</p>
         <button
@@ -80,34 +79,14 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="z-10 bg-[var(--fondo2)]/60 justify-center xl:hidden flex p-2">
+        <div className="z-10 bg-[var(--fondo2)]/60 hidden justify-center xl:hidden md:flex p-2">
             <p className="text-[var(--text1)] text-[1.2rem] font-extrabold">TITAN<span className="text-white">CRAFT</span></p>
         </div>
 
         {/* Header 3 */}
-        <div className="z-10 bg-[var(--fondo2)]/60 xl:bg-[var(--fondo2)]/40 flex xl:justify-center justify-between gap-2 md:gap-20 items-center xl:p-0 pl-5 pr-5 pb-10 xl:pb-0">
+        <div className="z-10 bg-[var(--fondo2)]/60 xl:bg-[var(--fondo2)]/40 xl:justify-center justify-between hidden md:flex gap-20 items-center xl:p-0 pl-5 pr-5 pb-10 xl:pb-0">
 
-          <div className="hidden md:flex items-center gap-4 drop-shadow-[0_0_20px_gray]">
-            <div className="hex w-23 h-21 flex justify-center bg-[#B3B3B3] items-center opacity-70">
-              <div className="hex bg-gradient-to-r from-[#B3B3B3] to-[#4D4D4D] w-21 h-19 flex justify-center items-start">
-                <img src="../public/steve.webp" className=" w-15 opacity-60 h-auto mt-2 filter grayscale"/>
-              </div>
-            </div>
-            <div className="">
-              <p className="text-white m-0 text-[17px] font-extrabold">COMPRANDO COMO <p className="text-[var(--text3)] m-0 opacity-70">INVITADO</p></p>
-              <div className="flex gap-2 text-white justify-between text-[14px]">
-                <button onClick={openLogin} 
-                className="text-[var(--text3)] cursor-pointer hover:text-white"><i className="fa-solid fa-right-to-bracket" /> Registrarse</button>
-                <p>$ EUR</p>
-              </div>
-            </div>
-          </div>
-            {/* Registrarse card responsive */}
-          <button
-          onClick={openLogin}
-          className="font-extrabold md:hidden flex z-10 bg-gradient-to-r from-[#CCAC00] flex justify-center items-center to-[#665600] text-[var(--text2)] text-xl border-5 border-[#CCAC00] cursor-pointer transition transform hover:scale-[0.98] p-2 w-[15rem] h-[4rem]">
-            <h1 className="drop-shadow-[0_1px_3px_black]">REGISTRARSE</h1>
-          </button>
+        <BuyingAsGuessCard />
 
           <div className="hidden xl:flex">
             <img src="../public/logo.png" className="w-[30rem] p-4"></img>
@@ -121,11 +100,6 @@ export default function Header() {
                 </div>
                 <img src="../public/rubi.png" className="w-40 absolute ml-35 drop-shadow-[0_0_20px_red] transform transition duration-300 group-hover:scale-110"/>              
               </div>
-          </button>
-
-          {/* Carrito card responsive */}
-          <button className="font-extrabold md:hidden flex z-10 bg-gradient-to-r from-[#660000] to-[#FF3333] text-[var(--text2)] text-xl border-5 border-[#FF3333] cursor-pointer transition transform hover:scale-[0.98] p-2 w-[15rem] h-[4rem] flex justify-center items-center">
-            <h1 className="drop-shadow-[0_1px_3px_black]">CARRITO</h1>
           </button>
 
         </div>
