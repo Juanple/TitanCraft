@@ -5,7 +5,6 @@ export default function BuyingAsGuessCard() {
 
     const { openLogin, username, isLoged, logout } = useLogin();
     const [userImg, setUserImg] = useState(null)
-    console.log(isLoged);
 
     useEffect(() => {
         if (isLoged) {

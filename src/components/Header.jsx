@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BuyingAsGuessCard from "./BuyingAsGuessCard";
+import { useCart } from "../context/CartContext";
 
 
 export default function Header() {
     
     const [menuState, setMenuState] = useState(false);
+    const { openCart, items, totalPrice } = useCart();
+    const [update, setUpdate] = useState(false);
+
+    useEffect(() => {
+      setUpdate(!update);
+    },[items])
 
     const responsiveMenu = (
     <div className={`absolute transition-all duration-500 ${menuState ? 'left-0 opacity-100' : 'left-[-20rem] opacity-0'} xl:hidden z-20 top-0 bg-[var(--fondo)] text-[var(--text2)] w-[20rem] h-screen font-bold`}>
@@ -92,11 +99,13 @@ export default function Header() {
             <img src="../public/logo.png" className="w-[30rem] p-4"></img>
           </div>
 
-          <button className="hex-big cursor-pointer group bg-gradient-to-r from-[#FF3333] to-black/40 w-80 h-23 hidden md:flex justify-center items-center box-shadow-[0_0_20px_blue]">
+          <button 
+          onClick={openCart}
+          className="hex-big cursor-pointer group bg-gradient-to-r from-[#FF3333] to-black/40 w-80 h-23 hidden md:flex justify-center items-center box-shadow-[0_0_20px_blue]">
               <div className="relative hex-big bg-gradient-to-b from-black/40 to-[#FF0000] w-77 h-21 flex justify-start pl-10 items-center">
                 <div className="text-white flex flex-col items-start">
                   <h1 className="font-extrabold text-[1.2rem]"><i className="fa-solid fa-cart-shopping text-[0.9rem]"></i>CARRITO</h1>
-                  <p className="text-[var(--text3)] font-extrabold">0 items - 0.00 EUR</p>
+                  <p className="text-[var(--text3)] font-extrabold">{items} items - {totalPrice.toFixed(2)} EUR</p>
                 </div>
                 <img src="../public/rubi.png" className="w-40 absolute ml-35 drop-shadow-[0_0_20px_red] transform transition duration-300 group-hover:scale-110"/>              
               </div>

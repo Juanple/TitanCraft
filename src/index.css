@@ -5,14 +5,16 @@
 }
 
 :root {
-  --fondo: #341307;
-  --fondo2: #62190c;
-  --fondo3: #2a2a2a;
-  --fondo4: #3b3b3b;
-  --text1: #ffff89;
-  --text2: #e4e4e4;
-  --text3: #cacaca;
-  --focus: #7f2a1b; 
+  --fondo: #1a0d0a;      /* Fondo principal más oscuro, da más contraste */
+  --fondo2: #8b1e14;     /* Rojo intenso para secciones destacadas */
+  --fondo3: #202020;     /* Gris oscuro limpio, para tarjetas/containers */
+  --fondo4: #383838;     /* Gris medio, buen contraste con texto claro */
+  
+  --text1: #ffd93d;      /* Dorado brillante para títulos/detalles importantes */
+  --text2: #f5f5f5;      /* Blanco humo, texto principal */
+  --text3: #bfbfbf;      /* Gris claro para texto secundario */
+  
+  --focus: #d1401a;      /* Rojo de enfoque (hover, botones activos) */
 }
 
 .hex {

@@ -31,7 +31,7 @@ export default function LoginCard() {
   if (!isLoginOpen) return null;
 
   return (
-    <div className="bg-black/80 z-20 h-screen w-full absolute top-0 left-0 flex justify-center items-center text-[var(--text2)]">
+    <div className="bg-black/80 z-20 h-screen w-full fixed top-0 left-0 flex justify-center items-center text-[var(--text2)]">
       <div className="bg-[var(--fondo3)] w-200 flex flex-col">
         <div className="bg-[var(--fondo4)] flex justify-center items-end h-30 relative p-2">
           <p className="text-[var(--text3)]/40 font-bold">

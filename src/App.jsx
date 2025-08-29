@@ -1,27 +1,24 @@
-import { useState } from "react"
-import Header from "./components/Header"
 import TimeEvent from './components/TimeEvent'
 import SuportCard from "./components/SuportCard"
 import PaymentInfo from "./components/PaymentInfo"
+import { useNavigate } from "react-router-dom"
 
 export default function App() { 
 
-  
+  const navigate = useNavigate();
 
   return (
-    <div className="bg-[var(--fondo)]">
-
-      <Header />
+    <div className="">
       
       <main className="z-10 mt-[2rem] flex justify-center">
         <div className="w-[1300px] flex flex-col xl:flex-row gap-5 z-10 p-5">
           <div className="w-full xl:w-[80%] flex flex-col gap-5">
-            <TimeEvent targetDate={'2025-09-29T00:00:00'} title_yellow={'SERVER'} title_white={'LUNCH'} description={'Proximo lanzamiento de TitanCraft!'} />
+            <TimeEvent targetDate={'2025-09-29T00:00:00'} title_yellow={'SERVER'} title_white={'LUNCH'} description={'Proximo lanzamiento de TitanCraft!'} img={'../../event-img.png'} />
 
             {/* Secciones */}
             <div className="flex flex-col sm:flex-row w-full gap-5">
               <div className="w-full sm:w-[50%] flex flex-col gap-5">
-                <button className="overflow-hidden">
+                <button className="overflow-hidden" onClick={() => {navigate('/crono')}}>
                   <img src="../public/rango-vip.png" className="transform cursor-pointer transition hover:scale-[1.1]"></img>
                 </button>
                 <button className="overflow-hidden">
