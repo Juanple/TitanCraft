@@ -28,14 +28,14 @@ export default function Header() {
 
       <div className="flex flex-col text-[var(--text1)]">
         <button 
-        onClick={() => {navigate('/')}}
+        onClick={() => {navigate('/'); setMenuState(false)}}
         className="cursor-pointer flex justify-start p-4 hover:bg-white/8">HOME</button>
         <button 
-        onClick={() => {navigate('/nosotros')}}
+        onClick={() => {navigate('/nosotros'); setMenuState(false)}}
         className="cursor-pointer flex justify-start p-4 hover:bg-white/8">NOSOTROS</button>
         <button className="cursor-pointer flex justify-start p-4 hover:bg-white/8">RANKING</button>
         <button 
-        onClick={() => {setIsTicketOpen(true)}}
+        onClick={() => {setIsTicketOpen(true); setMenuState(false)}}
         className="cursor-pointer flex justify-start p-4 hover:bg-white/8">SOPORTE</button>
         <button 
         onClick={() => {openCart(); setMenuState(false)}}

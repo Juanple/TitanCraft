@@ -12,6 +12,7 @@ import { BuyProvider } from './context/BuyContext.jsx'
 import Nosotros from './pages/Nosotros.jsx'
 import Loading from './components/Loading.jsx'
 import TicketCard from './components/TicketCard.jsx'
+import Dinero from './pages/Dinero.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')).render(
               <Route path='/' element={<App />} />
               <Route path='/crono' element={<Crono />}></Route>
               <Route path='/nosotros' element={<Nosotros />} />
+              <Route path='/dinero' element={<Dinero />}></Route>
             </Routes>
 
             {/* Renderizamos componentes flotantes globalmente */}

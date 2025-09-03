@@ -3,12 +3,12 @@ import InfoListCard from "../components/InfoListCard";
 import ProductCard from "../components/ProductCard";
 import TimeEvent from "../components/TimeEvent";
 
-export default function Crono() {
+export default function Dinero() {
 
     const [productList, setProductList] = useState(['','','','','','']);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:5000/product/crono',{
+        fetch('http://127.0.0.1:5000/product/dinero',{
             method: 'GET'
         }).then(res => res.json())
         .then(data => {
@@ -29,11 +29,7 @@ export default function Crono() {
 
             <main className="mt-[2rem] w-full flex justify-center">
                 <div className="w-full xl:w-[1300px] flex flex-col xl:flex-row gap-5 p-5">
-                    <div className="xl:w-[30%]">
-
-                        <InfoListCard title={'CRONO'} list={infoList}/>
-                    </div>
-
+                    
                     <div className="xl:w-[70%] flex flex-col gap-5">
 
                         <div>
@@ -47,8 +43,14 @@ export default function Crono() {
                         </div>
 
                     </div>
+                    
+                    <div className="xl:w-[30%]">
+                        <InfoListCard title={'PACKS DE DINERO'} list={infoList}/>
+                    </div>
+
                 </div>
             </main>
         </div>
     )
+
 }

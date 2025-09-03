@@ -1,16 +1,15 @@
-import pymysql
 from connection import getConnection
 from flask import jsonify, Blueprint
 
-crono = Blueprint('crono', __name__)
+get_product_card = Blueprint('get_product_card', __name__)
 
-@crono.route('/crono', methods=['GET'])
-def getProductList():
+@get_product_card.route('/product/<category>', methods=['GET'])
+def getProductList(category):
 
     connection = getConnection()
     cursor = connection.cursor()
 
-    cursor.execute('SELECT img_url, title, description, price, discount, color, command FROM product WHERE category = "crono"')
+    cursor.execute('SELECT img_url, title, description, price, discount, color, command FROM product WHERE category = %s', (category, ))
     productList = cursor.fetchall()
 
     connection.commit()

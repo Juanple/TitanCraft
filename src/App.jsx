@@ -21,7 +21,7 @@ export default function App() {
                 <button className="overflow-hidden" onClick={() => {navigate('/crono')}}>
                   <img src="../public/rango-vip.png" className="transform cursor-pointer transition hover:scale-[1.1]"></img>
                 </button>
-                <button className="overflow-hidden">
+                <button className="overflow-hidden" onClick={() => {navigate('/dinero')}}>
                   <img src="../public/pack-dinero.png" className="transform cursor-pointer transition hover:scale-[1.1]"></img>
                 </button>
               </div>
