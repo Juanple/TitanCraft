@@ -14,6 +14,7 @@ export default function LoginCard() {
     const res = await login(username, password);
 
     if(res) {
+      setMessage('');
       closeLogin();
     } else {
       setMessage('Datos introducidos incorrectos');

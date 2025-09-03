@@ -36,7 +36,7 @@ export default function Cart() {
 
                 <div className="flex justify-between p-3 bg-[var(--fondo2)]">
                     <h1>{username}</h1>
-                    <button className="cursor-pointer font-bold">EUR<i className="fa-solid fa-angle-down" /></button>
+                    <button className="cursor-pointer font-bold">Comprar</button>
                 </div>
 
                 <div className="bg-[var(--fondo3)] h-screen flex flex-col font-bold">

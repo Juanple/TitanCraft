@@ -6,7 +6,7 @@ const CartContext = createContext()
 export function CartProvider({ children }) {
 
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const { isLoged, openLogin, username } = useLogin();
+    const { isLoged, openLogin, username, setLoading } = useLogin();
     const [ items, setItems ] = useState(0);
     const [ totalPrice, setTotalPrice ] = useState(0.00);
     const [productList, setProductList] = useState((''));
@@ -26,10 +26,12 @@ export function CartProvider({ children }) {
 
 
     async function getCartInfo() { // Cargar los productos de la db
+        setLoading(true);
         const response = await fetch(`http://127.0.0.1:5000/cart/${username}`, {
             method: 'GET'
         })
         const data = await response.json();
+        setLoading(false);
         setProductList(data['productList']); // Actualizar la productList
     } 
     useEffect(() => { // Cada vez que se abra el carrito se actualiza el cart

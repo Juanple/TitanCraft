@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import BuyingAsGuessCard from "./BuyingAsGuessCard";
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "../context/LoginContext";
 
 
 export default function Header() {
@@ -8,6 +10,8 @@ export default function Header() {
     const [menuState, setMenuState] = useState(false);
     const { openCart, items, totalPrice } = useCart();
     const [update, setUpdate] = useState(false);
+    const navigate = useNavigate();
+    const { setIsTicketOpen } = useLogin();
 
     useEffect(() => {
       setUpdate(!update);
@@ -23,11 +27,21 @@ export default function Header() {
       </div>
 
       <div className="flex flex-col text-[var(--text1)]">
-        <button className="cursor-pointer flex justify-start p-4 hover:bg-white/8">HOME</button>
-        <button className="cursor-pointer flex justify-start p-4 hover:bg-white/8">FORUM</button>
-        <button className="cursor-pointer flex justify-start p-4 hover:bg-white/8">STATS</button>
-        <button className="cursor-pointer flex justify-start p-4 hover:bg-white/8">WIKI</button>
-        <button className="cursor-pointer flex justify-start p-4"><p className="p-1 pl-6 pr-6 font-bold cursor-pointer w-fit text-[var(--fondo)] rounded-full h-fit bg-[var(--text1)] hover:bg-[var(--text1)]/90">STORE</p></button>
+        <button 
+        onClick={() => {navigate('/')}}
+        className="cursor-pointer flex justify-start p-4 hover:bg-white/8">HOME</button>
+        <button 
+        onClick={() => {navigate('/nosotros')}}
+        className="cursor-pointer flex justify-start p-4 hover:bg-white/8">NOSOTROS</button>
+        <button className="cursor-pointer flex justify-start p-4 hover:bg-white/8">RANKING</button>
+        <button 
+        onClick={() => {setIsTicketOpen(true)}}
+        className="cursor-pointer flex justify-start p-4 hover:bg-white/8">SOPORTE</button>
+        <button 
+        onClick={() => {openCart(); setMenuState(false)}}
+        className="cursor-pointer flex justify-start p-4 hover:bg-white/8">CARRITO</button>
+        <button 
+        className="cursor-pointer flex justify-start p-4"><p className="p-1 pl-6 pr-6 font-bold cursor-pointer w-fit text-[var(--fondo)] rounded-full h-fit bg-[var(--text1)] hover:bg-[var(--text1)]/90">PERFIL</p></button>
       </div>
     </div>
   )
@@ -42,16 +56,24 @@ export default function Header() {
         {/* Header 1*/}
         <div className="bg-[var(--fondo2)]/70 z-10 flex w-full xl:justify-center gap-[20%] text-[var(--text1)] font-bold text-[0.9rem] ">
           <div className="hidden xl:flex">
-            <button className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">HOME</button>
-            <button className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">FORUM</button>
-            <button className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">STATS</button>
-            <button className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">UPDATES</button>
+            <button 
+            onClick={() => {navigate('/')}}
+            className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">HOME</button>
+            <button 
+            onClick={() => {navigate('/nosotros')}}
+            className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">NOSOTROS</button>
+            <button className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">RANKING</button>
           </div>
           <div className="hidden xl:flex">
-            <button className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">WIKI</button>
-            <button className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">SUPPORT</button>
-            <button className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">MORE</button>
-            <button><p className="p-1 pl-6 pr-6 font-bold cursor-pointer text-[var(--fondo)] rounded-full h-fit bg-[var(--text1)] hover:bg-[var(--text1)]/90">STORE</p></button>
+            <button 
+            onClick={() => {setIsTicketOpen(true)}}
+            className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">SOPORTE</button>
+            <button 
+            onClick={openCart}
+            className="cursor-pointer hover:bg-white/8 pt-4 pb-4 pl-8 pr-8">CARRITO</button>
+            <button
+            ><p className="p-1 pl-6 pr-6 font-bold cursor-pointer text-[var(--fondo)] rounded-full h-fit bg-[var(--text1)] hover:bg-[var(--text1)]/90">
+              <i className="fa-solid fa-user"/>PERFIL</p></button>
           </div>
           {/* navigation button */}
           <button 

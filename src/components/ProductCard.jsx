@@ -1,6 +1,9 @@
 import { useCart } from "../context/CartContext";
+import { useBuy } from "../context/BuyContext";
 
 export default function ProductCard({img, title, description, price, discount, color}) {
+
+    const {buyNow} = useBuy();
 
     let resultPrice = price;
 
@@ -25,7 +28,7 @@ export default function ProductCard({img, title, description, price, discount, c
             <div className="flex flex-col justify-center gap-10">
                 <p className="text-[var(--text4)] text-center sm:text-start">{description}</p>
 
-                <div className="flex flex-col sm:flex-row justify-between items-center">
+                <div className="flex flex-col sm:flex-row sm:gap-0 gap-5 justify-between items-center">
                     <div className="relative">
                         <h1 className="text-white font-bold text-xl">{resultPrice} €</h1>
                         <div className={`absolute top-[-14px] right-[-20px] bg-red-400/40 pl-2 pr-2 hex-big ${discount ? 'visible' : 'hidden'}`}>
@@ -35,7 +38,8 @@ export default function ProductCard({img, title, description, price, discount, c
 
                     <div className="text-[var(--text2)] font-bold flex gap-5">
                         <button 
-                        style={{ borderColor: color, '--before-bg': color }} 
+                        style={{ borderColor: color, '--before-bg': color }}
+                        onClick={() => {buyNow(title)}} 
                         className={`max-w-[13rem] sm:w-[13rem] p-2 border-l-4 bg-[var(--fondo4)] group relative overflow-hidden cursor-pointer flex gap-2 items-center justify-center active:scale-[0.9]
                         before:content-'' before:bg-[var(--before-bg)] before:w-full before:h-full before:top-0 before:left-[-13rem] before:transition before:duration-500 before:absolute 
                         hover:before:translate-x-[13rem]`}><i className="fa-solid fa-cube relative z-2 group-hover:rotate-960 transition duration-1000"></i><span className="relative z-2">Comprar Ahora</span></button>

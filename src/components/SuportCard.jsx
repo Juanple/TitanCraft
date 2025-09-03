@@ -1,4 +1,9 @@
+import { useLogin } from "../context/LoginContext"
+
 export default function SuportCard() {
+
+    const { setIsTicketOpen } = useLogin();
+
     return (
         <div className="text-white flex flex-col bg-[var(--fondo3)] border-2 border-white/20 w-full">
             <div className="bg-white/5 text-xl font-extrabold text-[var(--text1)] p-6">
@@ -13,7 +18,9 @@ export default function SuportCard() {
                             <p className="text-sm text-[var(--text3)]/60">31,098 Resueltos</p>
                         </div>
                     </div>
-                    <button className="bg-white/7 rounded-full pl-4 pr-4 p-1 cursor-pointer">CREAR</button>
+                    <button 
+                    onClick={() => {setIsTicketOpen(true)}}
+                    className="bg-white/7 rounded-full pl-4 pr-4 p-1 cursor-pointer">CREAR</button>
                 </div>
                 <div className="flex text-blue-400 font-bold items-center justify-between">
                     <div className="flex gap-5">
