@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import InfoListCard from "../components/InfoListCard";
 import ProductCard from "../components/ProductCard";
 import TimeEvent from "../components/TimeEvent";
+import GiftCard from "../components/GiftCard";
 
 export default function Dinero() {
 
@@ -35,6 +36,8 @@ export default function Dinero() {
                         <div>
                             <TimeEvent targetDate={'2025-09-29T00:00:00'} title_yellow={'10%'} title_white={'DESCUENTO'} description={'10% Descuento en todas las compras!'} img={'../../public/monedas.png'}/>
                         </div>
+
+                        <GiftCard />
 
                         <div className="flex flex-col gap-5">
                             {productList.map((product, index) => (
